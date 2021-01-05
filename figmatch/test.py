@@ -4,6 +4,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 import cv2
 from sklearn.cluster import KMeans
+import figmatch
 #from matchscale import Cluster, figshow, OneCH2TreeCH, ObjectDetecting
 
 class hoge():
