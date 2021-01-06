@@ -7,11 +7,11 @@ import cv2
 from sklearn.cluster import KMeans
 import PySimpleGUI as sg
 
-import figmatch
+import figmatch as fm
 
-LAYOUT = [[sg.Text("Hello World!")],
-          [sg.Input("hogehoge",key="-filebrowse-"),
-           sg.FileBrowse("Browse", key="-filebrowse-"), sg.Submit()]]
+LAYOUT = [[sg.Text("Enter Before image.")],
+          [sg.Input("Image before"),
+           sg.FileBrowse("Browse", key="-BeforePath-"), sg.Submit(key="-submit-")]]
 
 
 if __name__ == '__main__':
@@ -23,7 +23,9 @@ if __name__ == '__main__':
 
         if event is None:
             break
-        if event == "-filebrowse-":
-            print(value)
+        if event == "-submit-":
+            before_path = value["-BeforePath-"]
+            before = cv2.imread(before_path)
+            fm.figshow(before)
 
     window.close()
