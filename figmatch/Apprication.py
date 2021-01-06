@@ -9,10 +9,13 @@ import PySimpleGUI as sg
 
 import figmatch
 
-LAYOUT = [[sg.Text("Hello World!")]]
+LAYOUT = [[sg.Text("Hello World!")],
+          [sg.Input("hogehoge",key="-filebrowse-"),
+           sg.FileBrowse("Browse", key="-filebrowse-"), sg.Submit()]]
 
-def main():
-    """メイン関数"""
+
+if __name__ == '__main__':
+    os.chdir(os.path.dirname(os.path.abspath(__file__)))
     window = sg.Window("my window", LAYOUT)
 
     while True:
@@ -20,9 +23,7 @@ def main():
 
         if event is None:
             break
+        if event == "-filebrowse-":
+            print(value)
 
     window.close()
-
-if __name__ == '__main__':
-    os.chdir(os.path.dirname(os.path.abspath(__file__)))
-    main()
